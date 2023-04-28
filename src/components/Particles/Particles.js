@@ -35,7 +35,7 @@ const ParticlesComponent = (props) => {
         },
         modes: {
           push: {
-            quantity: 10, // number of particles to add on click
+            quantity: 5, // number of particles to add on click
           },
           repulse: {
             distance: 100, // distance of the particles from the cursor

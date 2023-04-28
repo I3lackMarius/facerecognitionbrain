@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import Logo from "./components/Logo/Logo";
+import SignIn from "./components/SignIn/SignIn";
 import Rank from "./components/Rank/Rank";
 import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Particles from "./components/Particles/Particles";
@@ -13,6 +14,7 @@ class App extends Component {
       input: "",
       imageUrl: "",
       box: {},
+      route: "SignIn",
     };
   }
 
@@ -75,12 +77,20 @@ class App extends Component {
       //.then((result) => console.log("result", result))
       .catch((error) => console.log("error", error));
   };
+
+  onRouteChange = (route) => {
+    this.setState({ route: route });
+  };
   render() {
     return (
       <div className="App">
-        <Particles />
-        <Navigation />
-        <Logo />
+        <Particles type="circle" bg={true} />
+        <Navigation onRouteChange={this.onRouteChange} />
+        {this.state.route === "SignIn" ? (
+          <SignIn onRouteChange={this.onRouteChange} />
+        ) : (
+          <Logo />
+        )}
         <Rank />
         <ImageLinkForm
           onInputChange={this.onInputChange}
