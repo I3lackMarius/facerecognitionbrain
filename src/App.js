@@ -8,6 +8,21 @@ import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
 import Particles from "./components/Particles/Particles";
 import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
 import "./App.css";
+
+const initialState = {
+  input: "",
+  imageUrl: "",
+  box: {},
+  route: "SignIn",
+  isSignedIn: false,
+  user: {
+    id: "",
+    name: "",
+    email: "",
+    entries: 0,
+    joined: "",
+  },
+};
 class App extends Component {
   constructor() {
     super();
@@ -111,7 +126,8 @@ class App extends Component {
             .then((response) => response.json())
             .then((count) => {
               this.setState(Object.assign(this.state.user, { entries: count }));
-            });
+            })
+            .catch(console.log);
         }
         this.displayFaceBox(this.calculateFaceLocation(response));
       })
@@ -121,7 +137,7 @@ class App extends Component {
 
   onRouteChange = (route) => {
     route === "SignOut"
-      ? this.setState({ isSignedIn: false })
+      ? this.setState({ initialState })
       : this.setState({ isSignedIn: true });
     this.setState({ route: route });
   };
