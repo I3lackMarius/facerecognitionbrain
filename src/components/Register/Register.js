@@ -23,17 +23,20 @@ class Register extends React.Component {
   onRegisterSignIn = () => {
     // console.log(this.state);
 
-    fetch("http://localhost:3000/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: this.state.RegName,
-        email: this.state.RegEmail,
-        password: this.state.RegPassword,
-      }),
-    })
+    fetch(
+      "https://facerecognitionbackend-87ft.onrender.com/register" /*"http://localhost:3000/register"*/,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.state.RegName,
+          email: this.state.RegEmail,
+          password: this.state.RegPassword,
+        }),
+      }
+    )
       .then((response) => response.json())
       .then((user) => {
         // console.log(user);

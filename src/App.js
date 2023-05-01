@@ -86,28 +86,34 @@ class App extends Component {
     // NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
     // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
     // this will default to the latest version_id
-    fetch("http://localhost:3000/imageUrl", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        input: this.state.input,
-      }),
-    })
+    fetch(
+      "https://facerecognitionbackend-87ft.onrender.com/imageUrl" /*"http://localhost:3000/imageUrl"*/,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          input: this.state.input,
+        }),
+      }
+    )
       .then((response) => response.json())
       .then((response) => {
         // console.log(response);
         if (response) {
-          fetch("http://localhost:3000/image", {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              id: this.state.user.id,
-            }),
-          })
+          fetch(
+            "https://facerecognitionbackend-87ft.onrender.com/image" /*"http://localhost:3000/image"*/,
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                id: this.state.user.id,
+              }),
+            }
+          )
             .then((response) => response.json())
             .then((count) => {
               this.setState(Object.assign(this.state.user, { entries: count }));
