@@ -1,11 +1,15 @@
 import React from "react";
 import "./SignIn.css";
+import show from "./show.png.webp";
+import hide from "./hide.png.webp";
+
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       signInEmail: "",
       signInPassword: "",
+      passwordShown: false,
     };
   }
   onEmailChange = (event) => {
@@ -19,7 +23,7 @@ class SignIn extends React.Component {
     // console.log(this.state);
 
     fetch(
-      "https://facerecognitionbackend-87ft.onrender.com/signin" /*"http://localhost:3000/signin"*/,
+      "http://localhost:3000/signin", //"https://facerecognitionbackend-87ft.onrender.com/signin",
       {
         method: "POST",
         headers: {
@@ -41,10 +45,14 @@ class SignIn extends React.Component {
       });
   };
 
+  togglePassword = () => {
+    this.setState({ passwordShown: !this.state.passwordShown });
+  };
+
   render() {
     const { onRouteChange } = this.props;
     return (
-      <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+      <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center blurry">
         <main className="pa4 black-80">
           <div className="measure">
             <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -58,6 +66,7 @@ class SignIn extends React.Component {
                   type="email"
                   name="email-address"
                   id="email-address"
+                  value="Tom@gmail.com"
                   onChange={this.onEmailChange}
                 />
               </div>
@@ -65,13 +74,26 @@ class SignIn extends React.Component {
                 <label className="db fw6 lh-copy f6" htmlFor="password">
                   Password
                 </label>
-                <input
-                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
-                  type="password"
-                  name="password"
-                  id="password"
-                  onChange={this.onPasswordChange}
-                />
+                <div className="passCont">
+                  <input
+                    className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                    type={this.state.passwordShown ? "text" : "password"}
+                    name="password"
+                    id="password"
+                    value="qwer"
+                    onChange={this.onPasswordChange}
+                  />
+                  {/*Element to toggle between password visibility */}
+                  <img
+                    className="passwordIcon"
+                    id="passwordIcon"
+                    alt="isPassVisible"
+                    src={this.state.passwordShown ? hide : show}
+                    style={{ width: "20px", height: "20px" }}
+                    onClick={this.togglePassword}
+                  />
+                </div>
+                <i>Use Tom as example, or create one</i>
               </div>
               {/* <label className="pa0 ma0 lh-copy f6 pointer">
               <input type="checkbox" /> Remember me

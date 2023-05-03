@@ -1,3 +1,20 @@
+.passCont {
+  position: relative;
+}
+
+.passwordIcon {
+  position: absolute;
+  top: 25%;
+  right: 4%;
+  cursor: pointer;
+  color: lightgray;
+}
+
+.blurry {
+  background: transparent;
+  backdrop-filter: blur(10px);
+}
+
 .ba {
   border-style: solid;
   border-width: 1px;

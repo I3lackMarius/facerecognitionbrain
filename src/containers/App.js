@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Navigation from "./components/Navigation/Navigation";
-import Logo from "./components/Logo/Logo";
-import SignIn from "./components/SignIn/SignIn";
-import Register from "./components/Register/Register";
-import Rank from "./components/Rank/Rank";
-import FaceRecognition from "./components/FaceRecognition/FaceRecognition";
-import Particles from "./components/Particles/Particles";
-import ImageLinkForm from "./components/ImageLinkForm/ImageLinkForm";
+import Navigation from "../components/Navigation/Navigation";
+import Logo from "../components/Logo/Logo";
+import SignIn from "../components/SignIn/SignIn";
+import Register from "../components/Register/Register";
+import Rank from "../components/Rank/Rank";
+import FaceRecognition from "../components/FaceRecognition/FaceRecognition";
+import Particles from "../components/Particles/Particles";
+import ImageLinkForm from "../components/ImageLinkForm/ImageLinkForm";
 import "./App.css";
 
 const initialState = {
@@ -23,6 +23,7 @@ const initialState = {
     joined: "",
   },
 };
+
 class App extends Component {
   constructor() {
     super();
@@ -56,7 +57,7 @@ class App extends Component {
 
   componentDidMount() {
     fetch(
-      "https://facerecognitionbackend-87ft.onrender.com" /*"http://localhost:3000"*/
+      "https://facerecognitionbackend-87ft.onrender.com" //"http://localhost:3000"
     ).then((response) => response.json());
     // .then((data) => console.log(data));
   }
@@ -89,7 +90,7 @@ class App extends Component {
     // https://api.clarifai.com/v2/models/{YOUR_MODEL_ID}/outputs
     // this will default to the latest version_id
     fetch(
-      "https://facerecognitionbackend-87ft.onrender.com/imageUrl" /*"http://localhost:3000/imageUrl"*/,
+      "https://facerecognitionbackend-87ft.onrender.com/imageUrl", //"http://localhost:3000/imageUrl",
       {
         method: "POST",
         headers: {
@@ -105,7 +106,7 @@ class App extends Component {
         // console.log(response);
         if (response) {
           fetch(
-            "https://facerecognitionbackend-87ft.onrender.com/image" /*"http://localhost:3000/image"*/,
+            "https://facerecognitionbackend-87ft.onrender.com/image", //"http://localhost:3000/image",
             {
               method: "PUT",
               headers: {
@@ -159,7 +160,7 @@ class App extends Component {
               imageUrl={this.state.imageUrl}
             />
           </div>
-        ) : this.state.route === "SignIn" ? (
+        ) : this.state.route === "SignOut" ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
         ) : (
           <Register
