@@ -82,7 +82,11 @@ class App extends Component {
   };
 
   onInputChange = (event) => {
-    this.setState({ input: event.target.value });
+    this.setState({
+      input: event.target.value
+        ? event.target.value
+        : "https://static-bebeautiful-in.unileverservices.com/Flawless-skin-basics.jpg",
+    });
   };
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });

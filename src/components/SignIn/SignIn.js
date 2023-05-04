@@ -7,11 +7,12 @@ class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      signInEmail: "",
-      signInPassword: "",
+      signInEmail: "Tom@gmail.com",
+      signInPassword: "qwer",
       passwordShown: false,
     };
   }
+
   onEmailChange = (event) => {
     this.setState({ signInEmail: event.target.value });
   };
@@ -23,7 +24,7 @@ class SignIn extends React.Component {
     // console.log(this.state);
 
     fetch(
-      "http://localhost:3000/signin", //"https://facerecognitionbackend-87ft.onrender.com/signin",
+      "https://facerecognitionbackend-87ft.onrender.com/signin", //"http://localhost:3000/signin",
       {
         method: "POST",
         headers: {

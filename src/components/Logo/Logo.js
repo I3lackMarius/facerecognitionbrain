@@ -1,7 +1,11 @@
 import React from "react";
 import { Tilt } from "react-tilt";
-import brain from "./brain.png";
+import HaloInd from "./HaloInd-Icon.png";
 import "./Logo.css";
+
+const handleClick = () => {
+  window.open("https://haloindustries.ro/");
+};
 
 const defaultOptions = {
   reverse: false, // reverse the tilt direction
@@ -23,8 +27,13 @@ const Logo = () => {
         options={defaultOptions}
         style={{ height: 150, width: 150 }}
       >
-        <div className="Tilt-inner pa4">
-          <img style={{ paddingTop: "5px" }} alt="logo" src={brain} />
+        <div className="Tilt-inner pa8">
+          <img
+            style={{ paddingTop: "5px" }}
+            alt="logo"
+            src={HaloInd}
+            onClick={handleClick}
+          />
         </div>
       </Tilt>
     </div>
