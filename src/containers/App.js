@@ -14,7 +14,6 @@ const initialState = {
   imageUrl: "",
   box: {},
   route: "SignIn",
-  isSignedIn: false,
   user: {
     id: "",
     name: "",
@@ -32,7 +31,6 @@ class App extends Component {
       imageUrl: "",
       box: {},
       route: "SignIn",
-      isSignedIn: false,
       user: {
         id: "",
         name: "",
@@ -83,11 +81,10 @@ class App extends Component {
 
   onInputChange = (event) => {
     this.setState({
-      input: event.target.value
-        ? event.target.value
-        : "https://static-bebeautiful-in.unileverservices.com/Flawless-skin-basics.jpg",
+      input: event.target.value,
     });
   };
+
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     // NOTE: MODEL_VERSION_ID is optional, you can also call prediction with the MODEL_ID only
@@ -134,9 +131,6 @@ class App extends Component {
   };
 
   onRouteChange = (route) => {
-    route === "SignOut"
-      ? this.setState({ initialState })
-      : this.setState({ isSignedIn: true });
     this.setState({ route: route });
   };
 
@@ -145,7 +139,7 @@ class App extends Component {
       <div className="App">
         <Particles type="circle" bg={true} />
         <Navigation
-          isSignedIn={this.state.isSignedIn}
+          route={this.state.route}
           onRouteChange={this.onRouteChange}
         />
         {this.state.route === "Home" ? (
@@ -164,7 +158,7 @@ class App extends Component {
               imageUrl={this.state.imageUrl}
             />
           </div>
-        ) : this.state.route === "SignOut" ? (
+        ) : this.state.route === "SignIn" ? (
           <SignIn loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
         ) : (
           <Register
