@@ -210,3 +210,7 @@
 .pointer:hover {
   cursor: pointer;
 }
+
+.h40 {
+  height: 40px;
+}
