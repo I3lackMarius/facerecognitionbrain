@@ -4,7 +4,7 @@ import HaloInd from "./HaloInd-Icon.png";
 import "./Logo.css";
 
 const handleClick = () => {
-  window.open("https://haloindustries.ro/");
+  window.open("https://github.com/I3lackMarius");
 };
 
 const defaultOptions = {
