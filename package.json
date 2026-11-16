@@ -43,5 +43,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "overrides": {
+    "browserslist": "4.28.7",
+    "node-forge": "1.4.3",
+    "svgo": "2.8.4"
   }
 }
